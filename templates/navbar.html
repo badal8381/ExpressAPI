@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href={% url 'home' %}>ExpressAPI</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href={% url 'home' %}>Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href={% url 'tts' %}>Text To Speech</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="document" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Document Converter
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="document">
+              <li><a class="dropdown-item" href={% url 'pdf2docx' %}>PDF To Docx</a></li>
+              <li><a class="dropdown-item" href={% url 'csv2excel' %}>CSV To Excel</a></li>
+              <li><a class="dropdown-item" href={% url 'excel2csv' %}>Excel To CSV</a></li>
+              <li><a class="dropdown-item" href={% url 'pdf2image' %}>PDF To Image</a></li>
+              <li><a class="dropdown-item" href={% url 'mergepdf' %}>Merge PDF</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="image" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Image Converter
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="image">
+              <li><a class="dropdown-item" href={% url 'png2jpg' %}>PNG To JPG</a></li>
+              <li><a class="dropdown-item" href={% url 'jpg2png' %}>JPG To PNG</a></li>
+              <li><a class="dropdown-item" href={% url 'img2pdf' %}>Image To PDF</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="video" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Video Converter
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="video">
+              <li><a class="dropdown-item" href={% url 'videomerge' %}>Merge Video and Audio</a></li>
+              <li><a class="dropdown-item" href={% url 'video2audio' %}>Extract Audio From Video</a></li>
+              <!-- <li><a class="dropdown-item" href={% url 'img2pdf' %}>Image To PDF</a></li> -->
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>

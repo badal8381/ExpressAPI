@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}
+PDF To Image Converter
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">PDF To Image Converter</h1>
+  <p class="lead text-center">Upload the PDF file and get it converted into images..</p>
+    <hr class="my-4">
+
+    <div class="row">
+        <div class="col-sm">
+          <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row mt-4 mb-4 pl-4 pr-4">
+              <div class="col">
+                <p>
+                <label for="pdf">Choose PDF : </label>
+                <input type="file" name="pdf" id="pdf" required>
+                </p>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Convert</button>
+            </div>
+            </div>
+          </form><br>
+        </div>
+        <div class="col-sm mt-4 mb-4 pl-4 pr-4">
+          {% if data %}
+          <p>Your Request has been processed....</p>
+          <p>Download Image Zip : <a class="btn btn-outline-primary" href={% url 'download-images' id=data.id %} role="button">Download</a></p>
+    
+          {% endif %}
+        </div>
+      </div>
+
+    {% if error %}
+    <div class="alert alert-warning" role="alert">
+        <p>Invalid File Uploaded. Please Upload .pdf file...</p>
+      </div>
+    {% endif %}
+</div>
+{% endblock %}

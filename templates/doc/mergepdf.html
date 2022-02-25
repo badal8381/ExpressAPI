@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+Merge PDF
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Merge PDF</h1>
+  <p class="lead text-center">Upload two PDF files, it will be merged and served to you...</p>
+  <hr class="my-4">
+
+  <div class="row">
+    <div class="col-sm">
+      <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row mt-4 mb-4 pl-4 pr-4">
+          <div class="col">
+            <p>
+              <label for="pdf1">Choose PDF 1 : </label>
+              <input type="file" name="pdf1" id="pdf1" required>
+            </p>
+            <p>
+              <label for="pdf2">Choose PDF 2 : </label>
+              <input type="file" name="pdf2" id="pdf2" required>
+            </p>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg btn-block mt-3">Merge</button>
+        </div>
+        </div>
+      </form><br>
+    </div>
+    <div class="col-sm mt-4 mb-4 pl-4 pr-4">
+      {% if data %}
+      <p>Your Request has been processed....</p>
+      <p>Download Document : <a class="btn btn-outline-primary" href={% url 'download-merged-pdf' id=data.id %}
+          role="button">Download</a></p>
+
+      {% endif %}
+    </div>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-warning" role="alert">
+    <p>Invalid File Uploaded. Please Upload .pdf file...</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

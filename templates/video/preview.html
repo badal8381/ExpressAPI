@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+Preview
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Merge Video and Audio</h1>
+  <hr class="my-4">
+  <h2 class="text-center">Preview of The Video...</h2>
+<center>
+<video width="400" height="300" controls controlsList="nodownload">
+  <source src="{{ data.output_video.url }}" type="video/mp4">
+</video>
+</center>
+{% endblock %}

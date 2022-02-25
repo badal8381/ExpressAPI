@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}
+ExpressAPI
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Home</h1>
+    <hr class="my-4">
+
+    <div class="container">
+        <div class="row align-items-md-stretch">
+            <div class="col-md-6 my-2">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Text To Speech</h2>
+                    <p>Enter Text inside the text field in any language, and select the language from dropdown menu, The Text will be transalated to the selected language and converted into speech</p>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'tts' %} role="button">Open Text To Speech</a>
+                </div>
+            </div>
+            <div class="col-md-6 my-2">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Document Converter</h2>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'pdf2docx' %} role="button">Open PDF To Docx</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'csv2excel' %} role="button">Open CSV To Excel</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'excel2csv' %} role="button">Open Excel To CSV</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'pdf2image' %} role="button">Open PDF To Image</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'mergepdf' %} role="button">Open Merge PDF</a>
+                </div>
+            </div>
+            <div class="col-md-6 my-2">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Image Converter</h2>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'png2jpg' %} role="button">Open PNG To JPG</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'jpg2png' %} role="button">Open JPG To PNG</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'img2pdf' %} role="button">Open Image To PDF</a>
+                </div>
+            </div>
+            <div class="col-md-6 my-2">
+                <div class="h-100 p-5 bg-light border rounded-3">
+                    <h2>Video Converter</h2>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'videomerge' %} role="button">Merge Video and Audio</a>
+                    <a class="btn btn-outline-secondary mt-2" href={% url 'video2audio' %} role="button">Extract Audio From Video</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

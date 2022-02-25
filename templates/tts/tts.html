@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}
+Text To Speech
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1 class="display-4">Text To Speech</h1>
+  <p class="lead text-center">Enter Text inside the text field in any language, and select the language from dropdown menu, The Text will be transalated to the selected language and converted into speech</p>
+  <hr class="my-4">
+
+  <div class="row">
+    <div class="col-sm">
+      <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-row mt-4 mb-4 pl-4 pr-4">
+          <div class="col">
+            <label for="textarea">Enter Text : </label>
+            <textarea class="form-control" id="textarea" name="text" rows="5"></textarea>
+            <label for="voice">Select Language : </label>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="lang">
+              <option selected value="hi">Hindi</option>
+              <option value="en">English</option>
+              <option value="mr">Marathi</option>
+              <option value="ta">Tamil</option>
+              <option value="te">Telugu</option>
+              <option value="gu">Gujarati</option>
+              <option value="bn">Bengali</option>
+              <option value="kn">Kannada</option>
+              <option value="ur">Urdu</option>
+              <option value="ml">Malayalam</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary mt-2">Convert</button>
+        </div>
+      </form><br>
+    </div>
+    <div class="col-sm mt-4 mb-4 pl-4 pr-4">
+      {% if data %}
+      <p>Pre listen the audio before downloading</p>
+      <audio controls controlsList="nodownload">
+        <source src="{{ data.speech.url }}" type="audio/mpeg">
+      </audio><br>
+      <p>Download Audio : <a class="btn btn-outline-primary" href={% url 'download-audio' id=data.id %}
+          role="button">Download</a></p>
+
+      {% endif %}
+    </div>
+  </div>
+
+  {% if error %}
+  <div class="alert alert-warning" role="alert">
+    <p>Internal Server Error, Sorry For inconvenience you faced. Please Try again. </p>
+  </div>
+  {% endif %}
+
+  {% if message %}
+  <div class="alert alert-warning" role="alert">
+    <p>Invalid File Format, only '.txt' files are Supported..</p>
+  </div>
+  {% endif %}
+  {% endblock %}
